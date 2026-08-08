@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="imagenes/logo1.png" type="image/x-icon">
+    <title>System School</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-wrapper">
+        <aside class="sidebar">
+            <h2>ANTIGRAVITY</h2>
+            <div class="user-card">
+                <p style="font-size: 40px; margin-bottom: 10px;">👤</p>
+                <p id="user-display">Invitado</p>
+                <button id="btn-logout" onclick="location.reload()"
+                    style="display:none; margin-top:15px; cursor:pointer; background:#333; color:white; border:none; padding:8px 15px; border-radius:8px;">SALIR</button>
+            </div>
+        </aside>
+
+        <main class="main-area" id="main-content">
+            <div class="login-box" id="auth-view">
+                <h1> ANTIGRAVITY</h1>
+                <button class="btn-main" onclick="abrirModal('DOCENTE')">DOCENTE</button>
+                <button class="btn-main" onclick="abrirModal('ALUMNO')">ESTUDIANTE</button>
+                <div class="footer-links">
+                    <span class="link-cyan" onclick="abrirRegistro('DOCENTE')">+ DOCENTE</span>
+                    <span class="link-gray" onclick="abrirRegistro('ALUMNO')">+ ALUMNO</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-overlay" class="modal-hidden">
+        <div class="modal-box" id="modal-dinamico"></div>
+    </div>
+    <div id="main-content"></div>
+    <div id="modal-overlay" class="modal-hidden">
+        <div id="modal-dinamico" class="modal-content"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJhomAUqhi4z0OwaztNv16bBkJLr9xJYs",
+            authDomain: "schoolsystem-f0d63.firebaseapp.com",
+            projectId: "schoolsystem-f0d63",
+            storageBucket: "schoolsystem-f0d63.firebasestorage.app",
+            messagingSenderId: "388856317222",
+            appId: "1:388856317222:web:7c55af8e7b0903a3012de7",
+            measurementId: "G-BJ57M9JE8Z"
+        };
+        // Inicializamos Firebase para que esté listo antes de usar script.js
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
