@@ -138,7 +138,7 @@ async function verSeccionNotas() {
     const alumnosAFiltrar = mostrarTodosLosAlumnos ? listaAlumnos : listaAlumnos.slice(0, 8);
 
     let h = `<h3>Registro: ${usuarioActual.cursoTemp} "${usuarioActual.paraleloTemp}"</h3><table>
-        <tr><th>ALUMNO</th><th>H(40)</th><th>S(45)</th><th>S(10)</th><th>A(5)</th><th>TOTAL</th></tr>`;
+        <tr><th>Código</th><th>ALUMNO</th><th>H(40)</th><th>S(45)</th><th>S(10)</th><th>A(5)</th><th>TOTAL</th></tr>`;
 
     alumnosAFiltrar.forEach(alu => {
         const n = (alu.calificaciones && alu.calificaciones[mat]) ? alu.calificaciones[mat] : { h: 0, s: 0, r: 0, a: 0 };
@@ -149,8 +149,9 @@ async function verSeccionNotas() {
         const nA = parseInt(n.a) || 0;
         const tot = nH + nS + nR + nA;
 
-        h += `<tr id="fila-${alu.user}">
-            <td>${alu.nombre}</td>
+        h += `<tr id="fila-${alu.user}">      
+            <td>${alu.user}</td>
+            <td>${alu.nombre}</td>         
             <td><input type="number" class="nota-h" min="0" max="40" value="${nH}" oninput="recalcularTotalFila('${alu.user}', 40, this)" onchange="actNota('${alu.user}','h',this.value)" style="width:50px"></td>
             <td><input type="number" class="nota-s" min="0" max="45" value="${nS}" oninput="recalcularTotalFila('${alu.user}', 45, this)" onchange="actNota('${alu.user}','s',this.value)" style="width:50px"></td>
             <td><input type="number" class="nota-r" min="0" max="10" value="${nR}" oninput="recalcularTotalFila('${alu.user}', 10, this)" onchange="actNota('${alu.user}','r',this.value)" style="width:50px"></td>
